@@ -1,0 +1,5 @@
+{
+  "name": "Angi Pilates Studio - Evaluación Inicial",
+  "description": "Una aplicación profesional para instructores de Pilates que permite realizar evaluaciones iniciales completas, generar diagnósticos mediante IA (Gemini) y descargar reportes en PDF.",
+  "requestFramePermissions": []
+}
