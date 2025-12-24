@@ -3,7 +3,14 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { EvaluationData, DiagnosisResponse } from "../types";
 
 export const generateAIDiagnosis = async (data: EvaluationData): Promise<DiagnosisResponse> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  // Verificación segura de la API KEY para evitar errores de ReferenceError: process is not defined
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+  
+  if (!apiKey) {
+    console.error("API_KEY no configurada en las variables de entorno.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: apiKey || '' });
 
   const prompt = `
     Analiza el siguiente perfil de alumno para Pilates Reformer y genera un informe profesional:
